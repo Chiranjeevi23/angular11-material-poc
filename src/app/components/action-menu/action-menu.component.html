@@ -1,0 +1,7 @@
+<div><button mat-raised-button color="accent" id="action-btn" type="button" (click)="toggleMenu()">
+    {{title}}
+  </button>
+</div>
+<div *ngIf="showMenu" id="dropdown">
+  <div tabindex="1" *ngFor="let option of options" (click)="itemClick(option.name)">{{option.desc}}</div>
+</div>

@@ -1,0 +1,16 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.content{
+  padding: 20px;
+  box-shadow: 8px 8px 12px 0 rgba(0,0,0,0.10);
+  -webkit-box-shadow: 8px 8px 12px 0 rgba(0,0,0,0.10);
+  -moz-box-shadow: 8px 8px 12px 0 rgba(0,0,0,0.10);
+}
+.marginTop {
+  margin-top: 50px;
+}
+

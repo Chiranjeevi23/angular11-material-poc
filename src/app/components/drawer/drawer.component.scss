@@ -1,0 +1,27 @@
+:host {
+  background-color: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  border: 1px solid #434448;
+  z-index: 12000;
+  overflow-y: auto;
+  height: 100%;
+}
+
+#drawer-close {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  font-weight: bold;
+  color: #434448;
+  cursor: pointer;
+}
+
+#drawer-content {
+  margin-top: 40px;
+}
+
+body {
+  overflow:hidden;
+}

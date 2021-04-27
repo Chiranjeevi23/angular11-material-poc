@@ -1,0 +1,18 @@
+<div class="container marginTop">
+  <div class="content">
+    <h2>Welcome to Chiranjeevi's Application</h2>
+    <h3>Stay tuned for this space. Work in progress!</h3>
+    <a routerLink="/ttt">Goto Tic Tac Toe</a>
+  </div>
+</div>
+
+<div style="margin: 20px 0 20px 0">
+  <mat-divider></mat-divider>
+</div>
+
+<div class="container">
+  <app-action-menu (menuItemClick)="changeOfCanvasDrawer($event)" [options]="actionOptions" title="Actions"
+    class="action-btn">
+  </app-action-menu>
+</div>
+

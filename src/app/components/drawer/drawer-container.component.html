@@ -1,0 +1,3 @@
+<div *ngIf="visible" id="container"></div>
+<app-drawer [@slideAnimation]="{value: 'open', params: {width: width}}" (hideDrawer)='close()' *ngIf="visible"
+  [drawerMenu]="drawerMenu" [width]="width"></app-drawer>
