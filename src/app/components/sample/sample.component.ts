@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { DrawerHandlerService } from 'src/app/services/drawer-handler.service';
-import { ActionOptions } from '../action-menu/action-menu.component';
 
 @Component({
   selector: 'app-sample',

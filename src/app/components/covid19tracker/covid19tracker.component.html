@@ -1,0 +1,71 @@
+<div class="table-container">
+  <h2>Covid-19 Cases in India by State wise</h2>
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search State..." #input>
+  </mat-form-field>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- lastupdatedtime Column -->
+      <!--  <ng-container matColumnDef="lastupdatedtime">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Updated Time </th>
+        <td mat-cell *matCellDef="let element"> {{element.lastupdatedtime}} </td>
+      </ng-container> -->
+
+      <!-- state Column -->
+      <!--  <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> state </th>
+        <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+      </ng-container>
+       -->
+      <!-- active Column -->
+      <!--  <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> active </th>
+        <td mat-cell *matCellDef="let element"> {{element.active}} </td>
+      </ng-container> -->
+
+      <!-- confirmed Column -->
+      <!-- <ng-container matColumnDef="confirmed">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> confirmed </th>
+        <td mat-cell *matCellDef="let element"> {{element.confirmed}} </td>
+      </ng-container> -->
+
+      <!-- recovered column -->
+      <!--  <ng-container matColumnDef="recovered">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> recovered </th>
+        <td mat-cell *matCellDef="let element"> {{element.recovered}} </td>
+      </ng-container> -->
+
+      <!-- deaths column -->
+      <!--  <ng-container matColumnDef="deaths">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> deaths </th>
+        <td mat-cell *matCellDef="let element"> {{element.deaths}} </td>
+      </ng-container>
+      -->
+
+      <!-- alternate usage of table -->
+      <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{column=='lastupdatedtime' ? 'Last Updated Time' : column | titlecase}}
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+</div>

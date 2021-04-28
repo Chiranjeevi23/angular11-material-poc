@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,6 +15,13 @@ import { SampleComponent } from './components/sample/sample.component';
 import { SampleDrawerFormComponent } from './components/sample-drawer-form/sample-drawer-form.component';
 import { ActionMenuComponent } from './components/action-menu/action-menu.component';
 import { TicTacToeComponent } from './components/tic-tac-toe/tic-tac-toe.component';
+import { Covid19trackerComponent } from './components/covid19tracker/covid19tracker.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -26,21 +32,28 @@ import { TicTacToeComponent } from './components/tic-tac-toe/tic-tac-toe.compone
     DrawerContainerComponent,
     SampleDrawerFormComponent,
     ActionMenuComponent,
-    TicTacToeComponent
+    TicTacToeComponent,
+    Covid19trackerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatSliderModule,
     MatIconModule,
     MatToolbarModule,
     MatProgressSpinnerModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTableModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatInputModule
   ],
   providers: [],
-  entryComponents:[SampleDrawerFormComponent],
+  entryComponents: [SampleDrawerFormComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
