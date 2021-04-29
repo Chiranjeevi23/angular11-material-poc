@@ -10,7 +10,7 @@ export class SampleComponent implements OnInit {
 
   actionOptions = [
     { name: 'sampleDrawerFormComponent', desc: 'Open Sample Drawer' },
-    { name: 'sample2', desc: 'Open Sample2 Drawer' }
+    { name: 'covidTracker', desc: 'Covid Tracker' }
   ]
 
   constructor(private drawerHandler: DrawerHandlerService) { }

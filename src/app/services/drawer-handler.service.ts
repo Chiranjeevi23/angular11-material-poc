@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Covid19trackerComponent } from '../components/covid19tracker/covid19tracker.component';
 import { SampleDrawerFormComponent } from '../components/sample-drawer-form/sample-drawer-form.component';
 import { DrawerHandlerComponent, DrawerHandlerComponents } from '../models/drawer-handle-comp.model';
 
@@ -9,7 +10,8 @@ import { DrawerHandlerComponent, DrawerHandlerComponents } from '../models/drawe
 })
 export class DrawerHandlerService {
   components: DrawerHandlerComponents = {
-    sampleDrawerFormComponent: { component: SampleDrawerFormComponent, data: {} }
+    sampleDrawerFormComponent: { component: SampleDrawerFormComponent, data: {} },
+    covidTracker: { component: Covid19trackerComponent, data: {} }
   }
 
   val: DrawerHandlerComponent = { component: null, data: null };
