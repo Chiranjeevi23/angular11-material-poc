@@ -8,7 +8,7 @@ import { TicTacToeComponent } from './components/tic-tac-toe/tic-tac-toe.compone
 const routes: Routes = [
   {path: 'sample', component: SampleComponent},
   {path: 'covid', component: Covid19trackerComponent},
-  {path: '', redirectTo: 'covid', pathMatch: 'full'},
+  {path: '', redirectTo: 'sample', pathMatch: 'full'},
   {path: 'ttt', component: TicTacToeComponent},
 ];
 

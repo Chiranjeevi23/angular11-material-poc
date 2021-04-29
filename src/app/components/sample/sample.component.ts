@@ -9,8 +9,7 @@ import { DrawerHandlerService } from 'src/app/services/drawer-handler.service';
 export class SampleComponent implements OnInit {
 
   actionOptions = [
-    { name: 'sampleDrawerFormComponent', desc: 'Open Sample Drawer' },
-    { name: 'covidTracker', desc: 'Covid Tracker' }
+    { name: 'sampleDrawerFormComponent', desc: 'Open Sample Drawer' }
   ]
 
   constructor(private drawerHandler: DrawerHandlerService) { }

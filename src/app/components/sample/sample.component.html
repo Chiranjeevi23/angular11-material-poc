@@ -2,7 +2,7 @@
   <div class="content">
     <h2>Welcome to Chiranjeevi's Application</h2>
     <h3>Stay tuned for this space. Work in progress!</h3>
-    <a routerLink="/ttt">Goto Tic Tac Toe</a>
+    <a routerLink="/covid">Goto Covid Tracker</a>
   </div>
 </div>
 
@@ -10,7 +10,8 @@
   <mat-divider></mat-divider>
 </div>
 
-<div class="container">
+<div class="btn-container">
+  <div><button mat-raised-button color="primary">Covid Tracker</button></div>
   <app-action-menu (menuItemClick)="changeOfCanvasDrawer($event)" [options]="actionOptions" title="Actions"
     class="action-btn">
   </app-action-menu>
