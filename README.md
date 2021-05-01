@@ -6,4 +6,6 @@
 
 ## Implemented interceptor using material spinner
 
+## Drop down implemented to show district wise Covid data in india
+
 
