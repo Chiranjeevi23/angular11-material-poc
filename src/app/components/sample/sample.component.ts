@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DrawerHandlerService } from 'src/app/services/drawer-handler.service';
 
 @Component({
@@ -12,13 +13,17 @@ export class SampleComponent implements OnInit {
     { name: 'sampleDrawerFormComponent', desc: 'Open Sample Drawer' }
   ]
 
-  constructor(private drawerHandler: DrawerHandlerService) { }
+  constructor(private drawerHandler: DrawerHandlerService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   changeOfCanvasDrawer(option: any) {
     this.drawerHandler.getForm(option);
+  }
+
+  goToCovidTracker(){
+    this.router.navigate(['/covid']);
   }
 
 }

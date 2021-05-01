@@ -16,12 +16,15 @@ import { SampleDrawerFormComponent } from './components/sample-drawer-form/sampl
 import { ActionMenuComponent } from './components/action-menu/action-menu.component';
 import { TicTacToeComponent } from './components/tic-tac-toe/tic-tac-toe.component';
 import { Covid19trackerComponent } from './components/covid19tracker/covid19tracker.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SpinnerService } from './services/spinner/spinner.service';
+import { HttpInterceptorService } from './services/http-interceptor/http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { MatSortModule } from '@angular/material/sort';
     SampleDrawerFormComponent,
     ActionMenuComponent,
     TicTacToeComponent,
-    Covid19trackerComponent
+    Covid19trackerComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -52,8 +56,14 @@ import { MatSortModule } from '@angular/material/sort';
     MatPaginatorModule,
     MatInputModule
   ],
-  providers: [],
-  entryComponents: [SampleDrawerFormComponent],
+  providers: [SpinnerService,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useFactory: (service: SpinnerService) => new HttpInterceptorService(service),
+    multi: true,
+    deps: [SpinnerService]
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
