@@ -85,7 +85,7 @@ export class DrawerContainerComponent implements OnInit {
   constructor(private readonly drawHandler: DrawerHandlerService) {
     this.drawHandler.getDrawer().subscribe(menu => {
       this.drawerMenu = menu;
-      console.log('menu', this.drawerMenu);
+      // console.log('menu', this.drawerMenu);
       this.width = this.drawerMenu.width ? this.drawerMenu.width : this.DEFAULT_WIDTH;
       if (menu.component !== null) {
         document.documentElement.style.overflow = 'hidden';

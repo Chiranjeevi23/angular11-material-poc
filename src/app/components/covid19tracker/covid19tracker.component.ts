@@ -4,6 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CovidResponse, StateWise } from 'src/app/models/covid-response.model';
 import { Covid19dataService } from 'src/app/services/covid19data.service';
+import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 export interface StateWiseData {
   active: string
@@ -22,6 +24,22 @@ export interface StateWiseData {
 
 let STATE_DATA: StateWiseData[] = [];
 
+export interface DistrictData {
+  district: string;
+  notes: string;
+  active: number;
+  confirmed: number;
+  deceased: number;
+  recovered: number;
+}
+export interface Delta {
+  confirmed: number;
+  deceased: number;
+  recovered: number;
+}
+
+let DISTRICT_DATA: DistrictData[] = [];
+
 @Component({
   selector: 'app-covid19tracker',
   templateUrl: './covid19tracker.component.html',
@@ -29,12 +47,12 @@ let STATE_DATA: StateWiseData[] = [];
 })
 export class Covid19trackerComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['lastupdatedtime', 'state', 'active', 'confirmed', 'recovered', 'deaths'];
-  dataSource = new MatTableDataSource<StateWiseData>([]);
+  dataSource = new MatTableDataSource<any>([]);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private covidData: Covid19dataService) {
+  constructor(private covidData: Covid19dataService, private router: Router) {
     // Assign the data to the data source for the table to render
     this.getCovidData();
   }
@@ -44,9 +62,19 @@ export class Covid19trackerComponent implements OnInit, AfterViewInit {
 
   error: string;
 
-  ngOnInit(): void {
+  /* drop-down select start */
+  toppings = new FormControl();
+  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  stateToDistMap = new Map();
+  statesArray: any[] = [];
 
-    /* this.getCovidStateAndDistrictWise(); */
+  distMap = new Map();
+  distDataSource = new MatTableDataSource<any>([]);
+  /* drop-down select end */
+
+
+  ngOnInit(): void {
+    this.getCovidStateAndDistrictWise();
   }
 
   ngAfterViewInit() {
@@ -70,9 +98,9 @@ export class Covid19trackerComponent implements OnInit, AfterViewInit {
       this.dataSource.data = STATE_DATA;
       // console.log("STATE_DATA - ", STATE_DATA);
     },
-    error => {
-      this.error = error;
-    });
+      error => {
+        this.error = error;
+      });
   }
 
   getCovidStateAndDistrictWise() {
@@ -89,12 +117,53 @@ export class Covid19trackerComponent implements OnInit, AfterViewInit {
        let obj: StateDistrictResponse = JSON.parse(JSON.stringify(data));
        console.log('obj', obj) */
 
-      let stateToDistMap = new Map();
+
       for (let k of Object.keys(data)) {
-        stateToDistMap.set(k, data[k]);
+        this.stateToDistMap.set(k, data[k]);
+        this.statesArray.push(k);
       }
-      console.log('stateToDistMap', stateToDistMap);
+
+      // console.log('stateToDistMap', this.stateToDistMap);
+      // console.log('statesArray', this.statesArray);
     });
+  }
+
+  selectedState(state: any) {
+
+    // const index = DISTRICT_DATA.indexOf(state);
+    // console.log('index', index)
+    // if (index !== -1) {
+    //   DISTRICT_DATA.splice(index, 1);
+    // }
+
+    // console.log("State Code - ", this.stateToDistMap.get(state).statecode);
+    // console.log("districts for selected state - ", this.stateToDistMap.get(state).districtData);
+    // const distData;
+    const distData = this.stateToDistMap.get(state).districtData;
+
+    for (let dist of Object.keys(distData)) {
+      // this.distMap.set(dist, distData[dist]);
+      let obj = {
+        district: dist,
+        notes: distData[dist].notes,
+        active: distData[dist].active,
+        confirmed: distData[dist].confirmed,
+        deceased: distData[dist].deceased,
+        recovered: distData[dist].recovered,
+      };
+      DISTRICT_DATA.push(obj)
+    }
+    console.log("DISTRICT_DATA", DISTRICT_DATA);
+
+    /* changing table to district view for the selected State */
+    this.displayedColumns = ['district', 'active', 'confirmed', 'recovered', 'deceased'];
+    this.dataSource.data = DISTRICT_DATA;
+    DISTRICT_DATA = [];
+  }
+
+  reset(){
+    this.displayedColumns = ['lastupdatedtime', 'state', 'active', 'confirmed', 'recovered', 'deaths'];
+    this.getCovidData();
   }
 
 }

@@ -12,7 +12,7 @@ export class HttpInterceptorService implements HttpInterceptor {
   constructor(private spinnerService: SpinnerService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log("interceptor called");
+    // console.log("interceptor called");
 
     // emit onStarted event before request execution
     this.spinnerService.onStarted(req);

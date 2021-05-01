@@ -1,54 +1,38 @@
 <div class="table-container">
-  <h2>Covid-19 Cases in India by State wise</h2>
-  <mat-form-field>
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Search State..." #input>
-  </mat-form-field>
+  <h2>Covid-19 Cases in India by State and District wise</h2>
+  <div style="display: flex; justify-content: space-evenly;">
+    <div>
+      <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search Data..." #input>
+      </mat-form-field>
+    </div>
+    <div>
+      <!-- state select start -->
+      <mat-form-field appearance="legacy">
+        <mat-label>Filter Dist by State(s)</mat-label>
+        <mat-select
+        [formControl]="toppings" >
+          <mat-select-trigger>
+            {{toppings.value ? toppings.value : 'None'}}
+            <!-- <span *ngIf="toppings.value?.length > 1" class="example-additional-selection">
+              (+{{toppings.value.length - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+            </span> -->
+          </mat-select-trigger>
+          <mat-option (click)="reset()"><strong>Reset</strong></mat-option>
+          <mat-option *ngFor="let topping of statesArray; let i = index" [value]="topping" (click)="selectedState(topping)">{{topping}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- state select end -->
+    </div>
+  </div>
+
 
   <div class="error">{{error}}</div>
 
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
-
-      <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
-      <!-- lastupdatedtime Column -->
-      <!--  <ng-container matColumnDef="lastupdatedtime">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Updated Time </th>
-        <td mat-cell *matCellDef="let element"> {{element.lastupdatedtime}} </td>
-      </ng-container> -->
-
-      <!-- state Column -->
-      <!--  <ng-container matColumnDef="state">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> state </th>
-        <td mat-cell *matCellDef="let element"> {{element.state}} </td>
-      </ng-container>
-       -->
-      <!-- active Column -->
-      <!--  <ng-container matColumnDef="active">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> active </th>
-        <td mat-cell *matCellDef="let element"> {{element.active}} </td>
-      </ng-container> -->
-
-      <!-- confirmed Column -->
-      <!-- <ng-container matColumnDef="confirmed">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> confirmed </th>
-        <td mat-cell *matCellDef="let element"> {{element.confirmed}} </td>
-      </ng-container> -->
-
-      <!-- recovered column -->
-      <!--  <ng-container matColumnDef="recovered">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> recovered </th>
-        <td mat-cell *matCellDef="let element"> {{element.recovered}} </td>
-      </ng-container> -->
-
-      <!-- deaths column -->
-      <!--  <ng-container matColumnDef="deaths">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> deaths </th>
-        <td mat-cell *matCellDef="let element"> {{element.deaths}} </td>
-      </ng-container>
-      -->
 
       <!-- alternate usage of table -->
       <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">

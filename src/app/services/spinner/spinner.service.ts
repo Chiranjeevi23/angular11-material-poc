@@ -7,7 +7,8 @@ import { EventEmitter, Injectable } from '@angular/core';
 })
 export class SpinnerService {
 
-  constructor() { console.log("--spinner service invoked--");
+  constructor() {
+    // console.log("--spinner service invoked--");
   }
 
   onLoadingChanged: EventEmitter<boolean> = new EventEmitter<boolean>(false);
@@ -21,7 +22,7 @@ export class SpinnerService {
    * Adds request to the storage and notifies observers
    */
    onStarted(req: HttpRequest<any>): void {
-     console.log("--onStarted method called--");
+    //  console.log("--onStarted method called--");
 
     this.requests.push(req);
     this.notify();
@@ -31,11 +32,12 @@ export class SpinnerService {
    * Removes request from the storage and notifies observers
    */
    onFinished(req: HttpRequest<any>): void {
-    console.log("--onFinished method called--");
+    // console.log("-- before splice this.requests--", this.requests);
     const index = this.requests.indexOf(req);
     if (index !== -1) {
       this.requests.splice(index, 1);
     }
+    // console.log("-- after this.requests--", this.requests);
     this.notify();
   }
 

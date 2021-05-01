@@ -25,6 +25,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SpinnerService } from './services/spinner/spinner.service';
 import { HttpInterceptorService } from './services/http-interceptor/http-interceptor.service';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { HttpInterceptorService } from './services/http-interceptor/http-interce
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatSliderModule,
     MatIconModule,
@@ -54,7 +58,8 @@ import { HttpInterceptorService } from './services/http-interceptor/http-interce
     MatSortModule,
     MatFormFieldModule,
     MatPaginatorModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [SpinnerService,
   {
