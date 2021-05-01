@@ -8,4 +8,6 @@
 
 ## Drop down implemented to show district wise Covid data in india
 
+Demo: https://covid19-tracker-by-chiru.web.app/
+
 
