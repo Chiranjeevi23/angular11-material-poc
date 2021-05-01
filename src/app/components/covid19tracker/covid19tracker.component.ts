@@ -42,6 +42,8 @@ export class Covid19trackerComponent implements OnInit, AfterViewInit {
   stateWise: CovidResponse;
   stateDistrictWise: any;
 
+  error: string;
+
   ngOnInit(): void {
 
     /* this.getCovidStateAndDistrictWise(); */
@@ -67,6 +69,9 @@ export class Covid19trackerComponent implements OnInit, AfterViewInit {
       STATE_DATA = data.statewise;
       this.dataSource.data = STATE_DATA;
       // console.log("STATE_DATA - ", STATE_DATA);
+    },
+    error => {
+      this.error = error;
     });
   }
 
