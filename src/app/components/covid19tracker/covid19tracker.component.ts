@@ -63,12 +63,10 @@ export class Covid19trackerComponent implements OnInit, AfterViewInit {
   error: string;
 
   /* drop-down select start */
-  toppings = new FormControl();
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  states = new FormControl();
   stateToDistMap = new Map();
   statesArray: any[] = [];
 
-  distMap = new Map();
   distDataSource = new MatTableDataSource<any>([]);
   /* drop-down select end */
 
@@ -142,7 +140,6 @@ export class Covid19trackerComponent implements OnInit, AfterViewInit {
     const distData = this.stateToDistMap.get(state).districtData;
 
     for (let dist of Object.keys(distData)) {
-      // this.distMap.set(dist, distData[dist]);
       let obj = {
         district: dist,
         notes: distData[dist].notes,
