@@ -7,7 +7,7 @@ import { SampleComponent } from './components/sample/sample.component';
 const routes: Routes = [
   {path: 'sample', component: SampleComponent},
   {path: 'covid', component: Covid19trackerComponent},
-  {path: '', redirectTo: 'sample', pathMatch: 'full'},
+  {path: '', redirectTo: 'covid', pathMatch: 'full'},
 ];
 
 @NgModule({
