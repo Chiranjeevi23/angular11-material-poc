@@ -14,7 +14,6 @@ import { DrawerComponent, DrawerContainerComponent } from './components/drawer/d
 import { SampleComponent } from './components/sample/sample.component';
 import { SampleDrawerFormComponent } from './components/sample-drawer-form/sample-drawer-form.component';
 import { ActionMenuComponent } from './components/action-menu/action-menu.component';
-import { TicTacToeComponent } from './components/tic-tac-toe/tic-tac-toe.component';
 import { Covid19trackerComponent } from './components/covid19tracker/covid19tracker.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
@@ -37,7 +36,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DrawerContainerComponent,
     SampleDrawerFormComponent,
     ActionMenuComponent,
-    TicTacToeComponent,
     Covid19trackerComponent,
     SpinnerComponent
   ],
