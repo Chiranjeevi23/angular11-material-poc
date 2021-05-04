@@ -53,7 +53,6 @@ export class Covid19trackerComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private covidData: Covid19dataService, private router: Router) {
-    // Assign the data to the data source for the table to render
     this.getCovidData();
   }
 
@@ -66,8 +65,6 @@ export class Covid19trackerComponent implements OnInit, AfterViewInit {
   states = new FormControl();
   stateToDistMap = new Map();
   statesArray: any[] = [];
-
-  distDataSource = new MatTableDataSource<any>([]);
   /* drop-down select end */
 
 
@@ -93,8 +90,8 @@ export class Covid19trackerComponent implements OnInit, AfterViewInit {
   getCovidData() {
     return this.covidData.getCovid19Data().subscribe(data => {
       STATE_DATA = data.statewise;
+      // Assign the data to the data source for the table to render
       this.dataSource.data = STATE_DATA;
-      // console.log("STATE_DATA - ", STATE_DATA);
     },
       error => {
         this.error = error;
@@ -102,27 +99,11 @@ export class Covid19trackerComponent implements OnInit, AfterViewInit {
   }
 
   getCovidStateAndDistrictWise() {
-    return this.covidData.getCovid19DataStateDistrictWise().subscribe(data => {
-      /*  this.stateDistrictWise = data;
-       console.log(this.stateDistrictWise)
-
-       let stateKeys = Object.keys(this.stateDistrictWise);
-       stateKeys.forEach(state => {
-       console.log(this.stateDistrictWise[state]);
-
-       }); */
-      /*  console.log(data)
-       let obj: StateDistrictResponse = JSON.parse(JSON.stringify(data));
-       console.log('obj', obj) */
-
-
+    this.covidData.getCovid19DataStateDistrictWise().subscribe(data => {
       for (let k of Object.keys(data)) {
         this.stateToDistMap.set(k, data[k]);
         this.statesArray.push(k);
       }
-
-      // console.log('stateToDistMap', this.stateToDistMap);
-      // console.log('statesArray', this.statesArray);
     });
   }
 
@@ -134,9 +115,6 @@ export class Covid19trackerComponent implements OnInit, AfterViewInit {
     //   DISTRICT_DATA.splice(index, 1);
     // }
 
-    // console.log("State Code - ", this.stateToDistMap.get(state).statecode);
-    // console.log("districts for selected state - ", this.stateToDistMap.get(state).districtData);
-    // const distData;
     const distData = this.stateToDistMap.get(state).districtData;
 
     for (let dist of Object.keys(distData)) {
@@ -155,10 +133,11 @@ export class Covid19trackerComponent implements OnInit, AfterViewInit {
     /* changing table to district view for the selected State */
     this.displayedColumns = ['district', 'active', 'confirmed', 'recovered', 'deceased'];
     this.dataSource.data = DISTRICT_DATA;
+    /* resetting DISTRICT_DATA to add new data corresponding to selected state  */
     DISTRICT_DATA = [];
   }
 
-  reset(){
+  reset() {
     this.displayedColumns = ['lastupdatedtime', 'state', 'active', 'confirmed', 'recovered', 'deaths'];
     this.getCovidData();
   }
