@@ -45,3 +45,5 @@ testem.log
 .DS_Store
 Thumbs.db
 .vscode/settings.json
+firebase-debug.log
+.firebase/hosting.ZGlzdFxhbmd1bGFyLW1hdGVyaWFsLXBvYw.cache
