@@ -37,7 +37,11 @@
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./src/assets/india-map-hover.js",
+              "./src/assets/jquery-live.js"
+            ]
           },
           "configurations": {
             "production": {

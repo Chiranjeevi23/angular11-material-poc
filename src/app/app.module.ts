@@ -26,6 +26,7 @@ import { SpinnerService } from './services/spinner/spinner.service';
 import { HttpInterceptorService } from './services/http-interceptor/http-interceptor.service';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IndiaMapComponent } from './components/india-map/india-map.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SampleDrawerFormComponent,
     ActionMenuComponent,
     Covid19trackerComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    IndiaMapComponent
   ],
   imports: [
     BrowserModule,
