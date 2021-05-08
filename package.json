@@ -5,11 +5,12 @@
     "ng": "ng",
     "start-local": "ng serve",
     "start": "node server.js",
-    "build": "ng build",
+    "build": "ng build --prod",
     "firebase-build-deploy": "ng build --prod && firebase deploy",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --prod --aot "
   },
   "private": true,
   "dependencies": {
