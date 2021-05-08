@@ -38,9 +38,7 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "./node_modules/jquery/dist/jquery.min.js",
-              "./src/assets/india-map-hover.js",
-              "./src/assets/jquery-live.js"
+              "./node_modules/jquery/dist/jquery.min.js"
             ]
           },
           "configurations": {
