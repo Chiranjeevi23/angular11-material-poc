@@ -1,6 +1,6 @@
 <div class="table-container">
   <h1 style="text-align: center;">Covid-19 Cases in India by State and District wise</h1>
-  <div style="display: flex; justify-content: space-evenly;">
+  <div style="display: flex; justify-content: space-evenly; align-items:baseline">
     <div>
       <mat-form-field>
         <mat-label>Filter</mat-label>
@@ -16,20 +16,25 @@
             {{states.value ? states.value : 'None'}}
           </mat-select-trigger>
           <mat-option (click)="reset()"><strong>Reset</strong></mat-option>
-          <mat-option *ngFor="let state of statesArray; let i = index" [value]="state"
-            (click)="selectedState(state)">{{state}}
+          <mat-option *ngFor="let state of statesArray; let i = index" [value]="state" (click)="selectedState(state)">
+            {{state}}
           </mat-option>
         </mat-select>
       </mat-form-field>
       <!-- state select end -->
     </div>
+    <div>
+      <button mat-raised-button (click)="exporter.exportTable('xlsx', {fileName:'covid19Data'})">Excel</button>
+      &nbsp;&nbsp;<button mat-raised-button (click)="exporter.exportTable('json', {fileName:'covid19Data'})">Json</button>
+    </div>
   </div>
+
 
 
   <div class="error">{{error}}</div>
 
   <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" matSort>
+    <table mat-table [dataSource]="dataSource" matSort matTableExporter #exporter="matTableExporter">
 
       <!-- alternate usage of table -->
       <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">

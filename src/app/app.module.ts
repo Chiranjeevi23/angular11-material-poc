@@ -30,6 +30,7 @@ import { IndiaMapComponent } from './components/india-map/india-map.component';
 import { OverlaySidenavComponent } from './components/overlay-sidenav/overlay-sidenav.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import {MatListModule} from '@angular/material/list';
+import { MatTableExporterModule } from 'mat-table-exporter';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import {MatListModule} from '@angular/material/list';
     MatInputModule,
     MatSelectModule,
     MatListModule,
-    OverlayModule
+    OverlayModule,
+    MatTableExporterModule
   ],
   providers: [SpinnerService,
   {
