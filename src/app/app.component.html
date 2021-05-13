@@ -1,5 +1,28 @@
 <ng-container *ngIf="loading">
   <app-spinner></app-spinner>
 </ng-container>
+<div style="position: fixed; top: 0; width: 100%;">
+  <mat-toolbar>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+      (click)="isOpen = !isOpen" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+  </mat-toolbar>
+</div>
 <app-drawer-container></app-drawer-container>
+<!-- This template displays the overlay content and is connected to the button -->
+<!-- use this if necessary (overlayOutsideClick)="isOpen = false" -->
+<ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="trigger" [cdkConnectedOverlayOpen]="isOpen">
+
+  <div class="">
+    <app-overlay-sidenav></app-overlay-sidenav>
+  </div>
+
+</ng-template>
+
 <router-outlet></router-outlet>

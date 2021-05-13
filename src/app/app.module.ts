@@ -8,7 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { DrawerFormDirective } from './directives/drawer-form.directive';
+import { ComponentPlaceholderDirective, DrawerFormDirective } from './directives/drawer-form.directive';
 import { MatDividerModule } from '@angular/material/divider';
 import { DrawerComponent, DrawerContainerComponent } from './components/drawer/drawer.component';
 import { SampleComponent } from './components/sample/sample.component';
@@ -27,6 +27,9 @@ import { HttpInterceptorService } from './services/http-interceptor/http-interce
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IndiaMapComponent } from './components/india-map/india-map.component';
+import { OverlaySidenavComponent } from './components/overlay-sidenav/overlay-sidenav.component';
+import { OverlayModule } from '@angular/cdk/overlay';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,9 @@ import { IndiaMapComponent } from './components/india-map/india-map.component';
     ActionMenuComponent,
     Covid19trackerComponent,
     SpinnerComponent,
-    IndiaMapComponent
+    IndiaMapComponent,
+    OverlaySidenavComponent,
+    ComponentPlaceholderDirective
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,9 @@ import { IndiaMapComponent } from './components/india-map/india-map.component';
     MatFormFieldModule,
     MatPaginatorModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatListModule,
+    OverlayModule
   ],
   providers: [SpinnerService,
   {

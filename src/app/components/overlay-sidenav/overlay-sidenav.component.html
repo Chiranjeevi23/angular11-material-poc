@@ -1,0 +1,7 @@
+<div class="overlay-container">
+  <mat-selection-list #shoes [multiple]="false">
+    <mat-list-option class="font-color" *ngFor="let shoe of typesOfShoes" [value]="shoe">
+      {{shoe}}
+    </mat-list-option>
+  </mat-selection-list>
+</div>

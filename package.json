@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "heroku-postbuild": "ng build --prod --aot",
-    "start-local": "ng serve",
+    "dev": "ng serve",
     "start": "node server.js",
     "build": "ng build --prod --aot",
     "firebase-build-deploy": "ng build --prod && firebase deploy",
@@ -15,7 +15,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.2.11",
-    "@angular/cdk": "^11.2.10",
+    "@angular/cdk": "^11.2.12",
     "@angular/common": "~11.2.11",
     "@angular/compiler": "~11.2.11",
     "@angular/core": "~11.2.11",

@@ -6,3 +6,11 @@ import { Directive, ViewContainerRef } from '@angular/core';
 export class DrawerFormDirective {
   constructor(public viewContainerRef: ViewContainerRef) { }
 }
+
+@Directive({
+  selector: '[componentPlaceholder]'
+})
+export class ComponentPlaceholderDirective {
+  constructor(public viewContainerRef: ViewContainerRef) { }
+}
+
